@@ -8,6 +8,29 @@
     <!--Application Resources-->
     <Application.Resources>
         <local:LocalizedStrings xmlns:local="clr-namespace:Peregrin" x:Key="LocalizedStrings"/>
+        <Style x:Key="MainGridStyle" TargetType="Grid">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
+                        <GradientStop Color="#3d9dff" Offset="0"/>
+                        <GradientStop Color="#005dbd" Offset="1"/>
+                    </RadialGradientBrush>
+                </Setter.Value>
+            </Setter>            
+        </Style>
+        <Style x:Key="CommonTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#10041d"/>
+            <Setter Property="FontSize" Value="72" />
+        </Style>
+
+        <Style x:Key="ListBoxTextItemHeader" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#10041d"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        
+        
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>
