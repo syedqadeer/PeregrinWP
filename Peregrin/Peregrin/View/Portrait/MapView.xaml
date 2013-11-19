@@ -14,21 +14,40 @@
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid x:Name="LayoutRoot" Style="{StaticResource MainGridStyle}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
+
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <Image Source="/Assets/Images/Common/logo_peregrin.png" Height="75" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock Text="Map" Margin="9,-7,0,0" Style="{StaticResource CommonTextStyle}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="75"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="12"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="12"/>
+                    <ColumnDefinition Width="75"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource SearchBoxStyle}" />
+                <Button Grid.Row="0" Grid.Column="3"  Style="{StaticResource SubmitMiniButtonStyle}"/>
+                
+                <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3">
+
+                </Grid>
+            </Grid>
 
         </Grid>
     </Grid>

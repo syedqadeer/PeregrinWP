@@ -59,7 +59,16 @@
             <Setter Property="Height" Value="75"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
         </Style>
+        
+        <Style x:Name="SearchBoxStyle" TargetType="TextBox">
+            <Setter Property="Width" Value="350" />
+            <Setter Property="Height" Value="75" />
+        </Style>
 
+        <Style x:Name="SubmitMiniButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="75"/>
+            <Setter Property="Height" Value="75" />
+        </Style>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>
