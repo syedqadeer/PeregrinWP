@@ -30,7 +30,36 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
         
-        
+        <Style x:Key="VehicleButtonStyle" TargetType="Button">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0, 0.5" EndPoint="1, 0.5">
+                        <GradientStop Color="#10041d" Offset="0" />
+                        <GradientStop Color="#15002c" Offset="0.25" />                       
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="75"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+        </Style>
+
+        <Style x:Key="SubmitButtonStyle" TargetType="Button">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0, 0.5" EndPoint="1, 0.5">
+                        <GradientStop Color="#10041d" Offset="0" />
+                        <GradientStop Color="#15002c" Offset="0.25" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Width" Value="auto"/>
+            <Setter Property="Height" Value="75"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+        </Style>
+
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>
