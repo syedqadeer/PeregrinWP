@@ -19,7 +19,7 @@ namespace Peregrin.View.Portrait
 
         private void ListBox_SelectCityOnChange(object sender, SelectionChangedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/View/Panorama/VehicleView.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/View/Panorama/VehiclesView.xaml", UriKind.Relative));
         }
     }
 }
