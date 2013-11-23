@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -17,9 +18,14 @@
     <Grid x:Name="LayoutRoot" Style="{StaticResource MainGridStyle}">
         <phone:Panorama Title="Peregrin">          
             <phone:PanoramaItem Header="Bus">
-                <ListBox>
+                <ListBox>    
                     <ListBoxItem>
                         <Button Style="{StaticResource VehicleButtonStyle}" Content="129" />
+                            <toolkit:ContextMenuService.ContextMenu>
+                                <toolkit:ContextMenu IsZoomEnabled="True" x:Name="ContextMenu">
+                                    <toolkit:MenuItem x:Name="PinVehicle" Header="Pin vehicle to start" Click="PinVehicle_Click" />
+                                </toolkit:ContextMenu>
+                            </toolkit:ContextMenuService.ContextMenu>                       
                     </ListBoxItem>
                     <ListBoxItem>
                         <Button Style="{StaticResource VehicleButtonStyle}" Content="129" />
@@ -33,7 +39,7 @@
                     <ListBoxItem>
                         <Button Style="{StaticResource VehicleButtonStyle}" Content="129" />
                     </ListBoxItem>
-                </ListBox>
+                </ListBox>            
             </phone:PanoramaItem>
 
            
