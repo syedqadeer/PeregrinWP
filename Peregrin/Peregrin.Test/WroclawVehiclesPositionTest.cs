@@ -5,7 +5,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
+using Newtonsoft.Json;
 using Peregrin.Data;
+using Peregrin.Data.Interface;
+using Peregrin.Enums;
 using Peregrin.Extensions;
 using RestSharp;
 
@@ -56,10 +59,13 @@ namespace Peregrin.Test
             restRequest.AddParameter("busList[bus][]", 247);
 
             var result = await _restClient.GetResponseAsync(restRequest);
-         
-            var vehicle = result.Content;
 
-            vehicle.Should().Be("");
+            var vehicle = JsonConvert.DeserializeObject<IVehicle>(result.Content);
+
+            vehicle.Name.Should().Be("247");
+            vehicle.Type.Should().Be(VehicleType.Bus);
+            vehicle.X.Should().BeInRange(50.0, 60.0);
+            vehicle.Y.Should().BeInRange(10.0, 30.0);
         }
 
 
