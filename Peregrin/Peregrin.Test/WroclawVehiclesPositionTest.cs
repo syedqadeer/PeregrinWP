@@ -10,6 +10,7 @@ using Peregrin.Data;
 using Peregrin.Data.Interface;
 using Peregrin.Enums;
 using Peregrin.Extensions;
+using Peregrin.Services.DeserializeModel;
 using RestSharp;
 
 
@@ -56,13 +57,15 @@ namespace Peregrin.Test
         {
             //arrange
             var restRequest = new RestRequest("/", Method.POST);
-            restRequest.AddParameter("busList[bus][]", 247);
+            restRequest.AddParameter("busList[bus][]", 100);
 
             var result = await _restClient.GetResponseAsync(restRequest);
 
-            var vehicle = JsonConvert.DeserializeObject<IVehicle>(result.Content);
+            var deserializedString = JsonConvert.DeserializeObject<WroclawVehicleJsonModel>(result.Content);
+            var vehicle = new Vehicle();
+            
 
-            vehicle.Name.Should().Be("247");
+            vehicle.Name.Should().Be("100");
             vehicle.Type.Should().Be(VehicleType.Bus);
             vehicle.X.Should().BeInRange(50.0, 60.0);
             vehicle.Y.Should().BeInRange(10.0, 30.0);
