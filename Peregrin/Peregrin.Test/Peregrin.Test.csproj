@@ -146,6 +146,10 @@
       <Project>{34CE6E73-2BC4-4D86-A44F-08613CEFF2A6}</Project>
       <Name>Peregrin.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Peregrin.Services\Peregrin.Services.csproj">
+      <Project>{13F6D3CB-E5B9-4155-B606-5679A8A3023E}</Project>
+      <Name>Peregrin.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Peregrin\Peregrin.csproj">
       <Project>{831ADF27-1D91-44EF-BAB5-CE87CBD4B706}</Project>
       <Name>Peregrin</Name>
