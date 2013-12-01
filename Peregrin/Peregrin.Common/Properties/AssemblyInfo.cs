@@ -5,11 +5,11 @@ using System.Resources;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Peregrin")]
+[assembly: AssemblyTitle("Peregrin.Common")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Peregrin")]
+[assembly: AssemblyProduct("Peregrin.Common")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Resources;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("c02d3221-8e23-473c-8ec7-c7b7bef9a669")]
+[assembly: Guid("6e17d690-7832-4a83-a31d-47e72d2d4bed")]
 
 // Version information for an assembly consists of the following four values:
 //
