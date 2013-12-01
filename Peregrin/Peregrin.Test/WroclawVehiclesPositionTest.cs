@@ -1,8 +1,13 @@
-﻿using System.Net;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
+using AutoMapper;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using Newtonsoft.Json;
+using Peregrin.Common.Enum;
 using Peregrin.Data;
 using Peregrin.Extensions;
 using Peregrin.Services.DeserializeModel;
@@ -21,6 +26,7 @@ namespace Peregrin.Test
         public void SetUp()
         {
             _restClient = new RestClient(_apiAddress);
+            Bootstrapper.MapperInitialize();
         }
         
         [TestMethod]
@@ -52,18 +58,19 @@ namespace Peregrin.Test
         {
             //arrange
             var restRequest = new RestRequest("/", Method.POST);
-            restRequest.AddParameter("busList[bus][]", 100);
+            restRequest.AddParameter("busList[bus][]", 245);
 
             var result = await _restClient.GetResponseAsync(restRequest);
 
-            var deserializedString = JsonConvert.DeserializeObject<WroclawVehicleJsonModel>(result.Content);
-            var vehicle = new Vehicle();
-            
+            var deserializedString = JsonConvert.DeserializeObject<IEnumerable<WroclawVehicleJsonModel>>(result.Content);
 
-            vehicle.Name.Should().Be("100");
-            vehicle.Type.Should().Be(VehicleType.Bus);
-            vehicle.X.Should().BeInRange(50.0, 60.0);
-            vehicle.Y.Should().BeInRange(10.0, 30.0);
+            var vehicle = Mapper.Map<IEnumerable<WroclawVehicleJsonModel>, IEnumerable<Vehicle>>(deserializedString);
+
+            var assert = vehicle.FirstOrDefault(x=>x.Name=="245");
+            assert.Name.Should().Be("245");
+            assert.Type.Should().Be(VehicleType.Bus);
+            assert.X.Should().BeInRange(50.0, 60.0);
+            assert.Y.Should().BeInRange(10.0, 30.0);
         }
 
 
