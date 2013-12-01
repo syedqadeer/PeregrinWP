@@ -83,6 +83,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Automapper\CommonConfigs.cs" />
     <Compile Include="Automapper\WroclawVehicleConfig.cs" />
     <Compile Include="DeserializeModel\WroclawVehicleJsonModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

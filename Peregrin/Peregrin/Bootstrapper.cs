@@ -8,6 +8,7 @@ namespace Peregrin
         public static void MapperInitialize()
         {
             Mapper.Initialize(cfg => cfg.AddProfile<WroclawVehicleConfig>());
+            Mapper.Initialize(cfg => cfg.AddProfile<CommonConfigs>());
         }
     }
 }
