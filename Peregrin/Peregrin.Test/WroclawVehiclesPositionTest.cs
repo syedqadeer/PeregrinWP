@@ -1,14 +1,9 @@
-﻿using System;
-using System.Diagnostics;
-using System.Net;
-using System.Threading;
+﻿using System.Net;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using Newtonsoft.Json;
 using Peregrin.Data;
-using Peregrin.Data.Interface;
-using Peregrin.Enums;
 using Peregrin.Extensions;
 using Peregrin.Services.DeserializeModel;
 using RestSharp;

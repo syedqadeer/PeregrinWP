@@ -87,11 +87,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vehicle.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\Peregrin\Peregrin.csproj">
-      <Project>{831ADF27-1D91-44EF-BAB5-CE87CBD4B706}</Project>
-      <Name>Peregrin</Name>
+    <ProjectReference Include="..\Peregrin.Common\Peregrin.Common.csproj">
+      <Project>{6E17D690-7832-4A83-A31D-47E72D2D4BED}</Project>
+      <Name>Peregrin.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
