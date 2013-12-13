@@ -11,21 +11,27 @@ using Peregrin.Common.Enum;
 using Peregrin.Data;
 using Peregrin.Extensions;
 using Peregrin.Services.DeserializeModel;
+using Peregrin.Services.Providers;
 using RestSharp;
 
 
 namespace Peregrin.Test
 {
     [TestClass]
-    public class WroclawVehiclesPositionTest
+    public class WroclawApiTest
     {
         private readonly string _apiAddress = "http://pasazer.mpk.wroc.pl/position.php";
         private RestClient _restClient;
+        private IVehicleProvider _vehicleProvider; 
+
 
         [TestInitialize]
         public void SetUp()
         {
             _restClient = new RestClient(_apiAddress);
+
+            _vehicleProvider = new WroclawVehicleProvider();
+            
             Bootstrapper.MapperInitialize();
         }
         
@@ -58,19 +64,17 @@ namespace Peregrin.Test
         {
             //arrange
             var restRequest = new RestRequest("/", Method.POST);
-            restRequest.AddParameter("busList[bus][]", 245);
+            restRequest.AddParameter("busList[bus][]", 122);
 
-            var result = await _restClient.GetResponseAsync(restRequest);
-
-            var deserializedString = JsonConvert.DeserializeObject<IEnumerable<WroclawVehicleJsonModel>>(result.Content);
-
-            var vehicle = Mapper.Map<IEnumerable<WroclawVehicleJsonModel>, IEnumerable<Vehicle>>(deserializedString);
-
-            var assert = vehicle.FirstOrDefault(x=>x.Name=="245");
-            assert.Name.Should().Be("245");
-            assert.Type.Should().Be(VehicleType.Bus);
-            assert.X.Should().BeInRange(50.0, 60.0);
-            assert.Y.Should().BeInRange(10.0, 30.0);
+            //act
+            var result = await _vehicleProvider.GetVehicle("", VehicleType.Bus);
+            
+            //assert
+            
+            result.Name.Should().Be("122");
+            result.Type.Should().Be(VehicleType.Bus);
+            result.X.Should().BeInRange(50.0, 60.0);
+            result.Y.Should().BeInRange(10.0, 30.0);
         }
 
 
