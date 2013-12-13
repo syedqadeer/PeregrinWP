@@ -34,5 +34,6 @@ namespace Peregrin.Extensions
         {
             return client.SelectAsync(request, r => r);
         }
+
     }
 }
