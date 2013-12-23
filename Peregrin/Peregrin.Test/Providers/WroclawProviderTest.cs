@@ -4,24 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
-using NUnit.Framework;
 using Peregrin.Common.Enum;
 using Peregrin.Data.Interface;
 using Peregrin.Services.Providers;
+using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 
 namespace Peregrin.Test.Providers
 {
-    [TestFixture]
+   [TestClass]
    public  class WroclawProviderTest
     {
         private IVehicleProvider _provider;
 
-        [SetUp]
+        [TestInitialize]
         public void StartUp()
         {
             _provider = new WroclawVehicleProvider();;
         }
 
+        [TestMethod]
         public async Task GetVehicle()
         {
             //asset
@@ -36,10 +37,11 @@ namespace Peregrin.Test.Providers
             result.Name.Should().Be(name);
             result.Type.Should().Be(type);
             result.X.Should().BeInRange(52.00, 55.00);
-            result.Y.Should().BeInRange(10.00, 12.00);
+            result.Y.Should().BeInRange(10.00, 20.00);
 
         }
 
+        [TestMethod]
         public async Task GetVehicles()
         {
             //asset

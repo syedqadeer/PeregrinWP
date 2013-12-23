@@ -9,11 +9,10 @@ using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using Newtonsoft.Json;
 using Peregrin.Common.Enum;
 using Peregrin.Data;
-using Peregrin.Extensions;
 using Peregrin.Services.DeserializeModel;
 using Peregrin.Services.Providers;
 using RestSharp;
-
+using Peregrin.Common.Extensions;
 
 namespace Peregrin.Test
 {

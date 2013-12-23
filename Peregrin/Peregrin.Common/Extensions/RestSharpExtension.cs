@@ -1,8 +1,11 @@
-﻿using System;
+﻿using RestSharp;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
-using RestSharp;
 
-namespace Peregrin.Extensions
+namespace Peregrin.Common.Extensions
 {
     public static class RestSharpExtension
     {

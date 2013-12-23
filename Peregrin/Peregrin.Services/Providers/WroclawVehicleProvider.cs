@@ -7,6 +7,8 @@ using Peregrin.Common.Enum;
 using Peregrin.Data;
 using Peregrin.Data.Interface;
 using Peregrin.Services.DeserializeModel;
+using RestSharp;
+using Peregrin.Common.Extensions;
 
 namespace Peregrin.Services.Providers
 {
@@ -16,10 +18,11 @@ namespace Peregrin.Services.Providers
 
         public async Task<IVehicle> GetVehicle(string name, VehicleType vehicleType)
         {
-            var client = RestClient(_apiClient);
-            var request = RestRequest();
+            var client = new RestClient(_apiClient);
+            var request = new RestRequest("/", Method.POST);
+            request.AddParameter(string.Format("busList[{0}][]",vehicleType), name);
 
-            var result = await client.GetResponseAsync();
+            var result = await client.GetResponseAsync(request);
             var deserializedString = JsonConvert.DeserializeObject<WroclawVehicleJsonModel>(result.Content);
             var mappedObject = Mapper.Map<WroclawVehicleJsonModel, Vehicle>(deserializedString);
         
