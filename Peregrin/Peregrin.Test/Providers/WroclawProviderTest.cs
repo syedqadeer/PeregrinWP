@@ -19,16 +19,17 @@ namespace Peregrin.Test.Providers
         [TestInitialize]
         public void StartUp()
         {
-            _provider = new WroclawVehicleProvider();;
+            _provider = new WroclawVehicleProvider();
+            
         }
 
         [TestMethod]
         public async Task GetVehicle()
         {
             //asset
-            var name = "125";
+            var name = "255";
             var type = VehicleType.Bus;
-
+            Bootstrapper.MapperInitialize();
             //act
             var result = await _provider.GetVehicle(name, type);
 
