@@ -47,5 +47,21 @@ namespace Peregrin.Services.Providers
 
             return mappedObject;
         }
+
+
+        public IEnumerable<string> GetAvailableVehicles(VehicleType vehicleType)
+        {
+            var dictionaryOfVehicles = new Dictionary<string, VehicleType>();
+
+            dictionaryOfVehicles.Add("A", VehicleType.Bus);
+            dictionaryOfVehicles.Add("D", VehicleType.Bus);
+            dictionaryOfVehicles.Add("100", VehicleType.Bus);
+            dictionaryOfVehicles.Add("125", VehicleType.Bus);
+            dictionaryOfVehicles.Add("126", VehicleType.Bus);
+            dictionaryOfVehicles.Add("33+", VehicleType.Tram);
+
+
+            return dictionaryOfVehicles.Where(x => x.Value == vehicleType).Select(y => y.Key).ToList();
+        }
     }
 }
