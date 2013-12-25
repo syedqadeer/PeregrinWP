@@ -16,33 +16,30 @@
 
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot" Style="{StaticResource MainGridStyle}">
-        <phone:Panorama Title="Peregrin">          
+        <phone:Panorama Title="Peregrin">
             <phone:PanoramaItem Header="Bus">
-                <ListBox>    
-                    <ListBoxItem>
-                        <Button Style="{StaticResource VehicleButtonStyle}" Content="129" />
-                            <toolkit:ContextMenuService.ContextMenu>
-                                <toolkit:ContextMenu IsZoomEnabled="True" x:Name="ContextMenu">
-                                    <toolkit:MenuItem x:Name="PinVehicle" Header="Pin vehicle to start" Click="PinVehicle_Click" />
-                                </toolkit:ContextMenu>
-                            </toolkit:ContextMenuService.ContextMenu>                       
-                    </ListBoxItem>
-                    <ListBoxItem>
-                        <Button Style="{StaticResource VehicleButtonStyle}" Content="129" />
-                    </ListBoxItem>
-                    <ListBoxItem>
-                        <Button Style="{StaticResource VehicleButtonStyle}" Content="129" />
-                    </ListBoxItem>
-                    <ListBoxItem>
-                        <Button Style="{StaticResource VehicleButtonStyle}" Content="129" />
-                    </ListBoxItem>
-                    <ListBoxItem>
-                        <Button Style="{StaticResource VehicleButtonStyle}" Content="129" />
-                    </ListBoxItem>
-                </ListBox>            
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="BusTextBoxFilter" Text="type a name" TextChanged="BusTextBoxFilter_TextChanged"/>
+                    <ListBox x:Name="BusListBox" Grid.Row="1">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Button Style="{StaticResource VehicleButtonStyle}" Content="{Binding Name}" />
+                                <toolkit:ContextMenuService.ContextMenu>
+                                    <toolkit:ContextMenu IsZoomEnabled="True" x:Name="ContextMenu">
+                                        <toolkit:MenuItem x:Name="PinVehicle" Header="Pin vehicle to start" Click="PinVehicle_Click" />
+                                    </toolkit:ContextMenu>
+                                </toolkit:ContextMenuService.ContextMenu>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
             </phone:PanoramaItem>
 
-           
+
             <phone:PanoramaItem Header="Tram">
                 <ListBox>
                     <ListBoxItem>
@@ -62,7 +59,7 @@
                     </ListBoxItem>
                 </ListBox>
             </phone:PanoramaItem>
-            
+
             <phone:PanoramaItem Header="My vehicles">
                 <Grid>
                     <ListBox>
