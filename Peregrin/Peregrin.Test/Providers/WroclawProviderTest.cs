@@ -63,11 +63,11 @@ namespace Peregrin.Test.Providers
         }
 
         [TestMethod]
-        public void GetAvailableVehicles(VehicleType vehicleType)
+        public void GetAvailableVehicles()
         {           
             var result = _provider.GetAvailableVehicles(VehicleType.Bus);
 
-            result.Should().BeOfType<IEnumerable<string>>();
+            result.Should().BeOfType<List<string>>();
         }
 
     }
