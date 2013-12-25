@@ -9,7 +9,7 @@ using Peregrin.Data.Interface;
 using Peregrin.Services.DeserializeModel;
 using RestSharp;
 using Peregrin.Common.Extensions;
-
+using System.Linq;
 namespace Peregrin.Services.Providers
 {
     public class WroclawVehicleProvider : IVehicleProvider
@@ -20,18 +20,32 @@ namespace Peregrin.Services.Providers
         {
             var client = new RestClient(_apiClient);
             var request = new RestRequest("/", Method.POST);
-            request.AddParameter(string.Format("busList[{0}][]",vehicleType), name);
+            request.AddParameter(string.Format("busList[{0}][]",vehicleType.ToString().ToLower()), name);
 
             var result = await client.GetResponseAsync(request);
-            var deserializedString = JsonConvert.DeserializeObject<WroclawVehicleJsonModel>(result.Content);
-            var mappedObject = Mapper.Map<WroclawVehicleJsonModel, Vehicle>(deserializedString);
-        
-            return mappedObject;
+            var deserializedString = JsonConvert.DeserializeObject<IEnumerable<WroclawVehicleJsonModel>>(result.Content);            
+            var mappedObject = Mapper.Map<IEnumerable<WroclawVehicleJsonModel>, IEnumerable<Vehicle>>(deserializedString);
+            
+
+            return mappedObject.FirstOrDefault();
         }
 
         public async Task<IEnumerable<IVehicle>> GetVehicles(IDictionary<string, VehicleType> dictionaryOfVehicles)
         {
-            throw new NotImplementedException();
+            var client = new RestClient(_apiClient);
+            var request = new RestRequest("/", Method.POST);
+
+            foreach (var item in dictionaryOfVehicles)
+            {
+                request.AddParameter(string.Format("busList[{0}][]", item.Value), item.Key);
+            }
+
+            var result = await client.GetResponseAsync(request);
+            var deserializedString = JsonConvert.DeserializeObject<IEnumerable<WroclawVehicleJsonModel>>(result.Content);
+            var mappedObject = Mapper.Map<IEnumerable<WroclawVehicleJsonModel>, IEnumerable<Vehicle>>(deserializedString);
+
+
+            return mappedObject;
         }
     }
 }
