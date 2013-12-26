@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Controls="clr-namespace:Microsoft.Phone.Maps.Controls;assembly=Microsoft.Phone.Maps"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -43,10 +44,7 @@
 
                 <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource SearchBoxStyle}" />
                 <Button Grid.Row="0" Grid.Column="3"  Style="{StaticResource SubmitMiniButtonStyle}"/>
-                
-                <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3">
-
-                </Grid>
+                <Controls:Map Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"></Controls:Map>              
             </Grid>
 
         </Grid>
