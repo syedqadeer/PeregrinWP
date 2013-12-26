@@ -1,4 +1,5 @@
 ﻿using Microsoft.Phone.Controls;
+using Nokia.Phone.HereLaunchers;
 
 namespace Peregrin.View.Portrait
 {

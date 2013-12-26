@@ -189,6 +189,9 @@
     <Reference Include="AutoMapper.WP8">
       <HintPath>..\packages\AutoMapper.3.1.0\lib\wp8\AutoMapper.WP8.dll</HintPath>
     </Reference>
+    <Reference Include="HereLauncher">
+      <HintPath>..\packages\HereLaunchers.1.2\lib\wp8\HereLauncher.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Phone.Controls, Version=8.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone.Controls.Toolkit">
       <HintPath>..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
