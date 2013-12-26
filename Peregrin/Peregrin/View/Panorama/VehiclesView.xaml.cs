@@ -102,5 +102,10 @@ namespace Peregrin.View.Panorama
                 MyVehiclesListBox.ItemsSource = temp.ToEnumerable();
             }
         }
+
+        private void NavigateToMap_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/View/Portrait/MapView.xaml", UriKind.Relative));            
+        }
     }
 }
