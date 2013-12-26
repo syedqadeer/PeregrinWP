@@ -59,6 +59,8 @@ namespace Peregrin.Services.Providers
             dictionaryOfVehicles.Add("125", VehicleType.Bus);
             dictionaryOfVehicles.Add("126", VehicleType.Bus);
             dictionaryOfVehicles.Add("33+", VehicleType.Tram);
+            dictionaryOfVehicles.Add("32+", VehicleType.Tram);
+            dictionaryOfVehicles.Add("12", VehicleType.Tram);
 
 
             return dictionaryOfVehicles.Where(x => x.Value == vehicleType).Select(y => y.Key).ToList();

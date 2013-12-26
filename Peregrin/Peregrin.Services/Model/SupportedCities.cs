@@ -16,7 +16,7 @@ namespace Peregrin.Services.Model
                 new City()
                 {
                     Name = "Wroclaw",
-                    ImageUrl = "Assets/Images/Arms/wroclaw.png"
+                    ImageUrl = "/Assets/Images/Arms/wroclaw.png"
                 }
             };
         }
