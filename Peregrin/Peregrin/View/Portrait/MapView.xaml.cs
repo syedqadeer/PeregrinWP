@@ -1,6 +1,7 @@
 ﻿using Microsoft.Phone.Controls;
 using Nokia.Phone.HereLaunchers;
 using System.Device.Location;
+using Microsoft.Phone.Maps;
 
 namespace Peregrin.View.Portrait
 {
@@ -8,18 +9,13 @@ namespace Peregrin.View.Portrait
     {
         public MapView()
         {
-            InitializeComponent();
-            InitializeHereMap();
+            InitializeComponent();            
         }
 
-
-        private void InitializeHereMap()
+        private void Map_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            ExploremapsShowMapTask mapTask = new ExploremapsShowMapTask();
-            mapTask.Location = new GeoCoordinate(51.0636, 17.0120);
-            mapTask.Zoom = 10;
-            mapTask.Show();
-
+            MapsSettings.ApplicationContext.ApplicationId = "f5f04dbf-5ac1-46d5-8070-514c9153971d";
+            MapsSettings.ApplicationContext.AuthenticationToken = "rPOvHDgmcJ_v1spsyP66iw";
         }
     }
 }
