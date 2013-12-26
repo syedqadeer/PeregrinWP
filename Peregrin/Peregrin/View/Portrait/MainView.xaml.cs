@@ -12,7 +12,7 @@ namespace Peregrin.View.Portrait
         public MainView()
         {
             InitializeComponent();
-            CityListbox.DataContext = SupportedCities.GetSupportedCities();
+            CityListbox.ItemsSource = SupportedCities.GetSupportedCities();
         }
 
         private void ListBox_SelectCityOnChange(object sender, SelectionChangedEventArgs e)
