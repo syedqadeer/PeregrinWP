@@ -105,7 +105,12 @@ namespace Peregrin.View.Panorama
 
         private void NavigateToMap_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/View/Portrait/MapView.xaml", UriKind.Relative));            
+            if (PhoneApplicationService.Current.State.ContainsKey("myVehicles"))
+            {
+                PhoneApplicationService.Current.State["myVehicles"] = new List<string>();
+                PhoneApplicationService.Current.State["myVehicles"] = _myVehicles;
+            }
+            NavigationService.Navigate(new Uri("/View/Portrait/MapView.xaml?", UriKind.Relative));            
         }
     }
 }
