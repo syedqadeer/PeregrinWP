@@ -49,7 +49,7 @@ namespace Peregrin.Services.Providers
         }
 
 
-        public IEnumerable<string> GetAvailableVehicles(VehicleType vehicleType)
+        public IDictionary<string, VehicleType> GetAvailableVehicles(VehicleType vehicleType)
         {
             var dictionaryOfVehicles = new Dictionary<string, VehicleType>();
 
@@ -63,7 +63,8 @@ namespace Peregrin.Services.Providers
             dictionaryOfVehicles.Add("12", VehicleType.Tram);
 
 
-            return dictionaryOfVehicles.Where(x => x.Value == vehicleType).Select(y => y.Key).ToList();
+            return dictionaryOfVehicles.Where(x => x.Value == vehicleType).ToDictionary(k => k.Key, v => v.Value);
+            
         }
     }
 }
