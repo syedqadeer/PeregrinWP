@@ -15,15 +15,16 @@ namespace Peregrin.View.Panorama
     public partial class VehiclesView : PhoneApplicationPage
     {
         private readonly WroclawVehicleProvider _provider;
-        private readonly IObservable<string> _buses;
-        private readonly IObservable<string> _trams;
-        private List<string> _myVehicles;
+        private readonly IObservable<KeyValuePair<string, VehicleType>> _buses;
+        private readonly IObservable<KeyValuePair<string, VehicleType>> _trams;
+        private IDictionary<string, VehicleType> _myVehicles;
 
         public VehiclesView()
-        {
+        {            
             InitializeComponent();
             _provider = new WroclawVehicleProvider();
-            _myVehicles = new List<string>();
+            _myVehicles = new Dictionary<string, VehicleType>();
+
             _buses = _provider.GetAvailableVehicles(VehicleType.Bus).ToObservable();
             _trams = _provider.GetAvailableVehicles(VehicleType.Tram).ToObservable();
             BusListBox.ItemsSource = _buses.ToEnumerable();
@@ -57,7 +58,7 @@ namespace Peregrin.View.Panorama
             if (filterContext.Text != null)
             {
                 var name = filterContext.Text;
-                BusListBox.ItemsSource = _buses.Where(x => x.Contains(name)).ToEnumerable();
+                BusListBox.ItemsSource = _buses.Where(x => x.Key.Contains(name)).ToEnumerable();
             }
         }
 
@@ -68,7 +69,7 @@ namespace Peregrin.View.Panorama
             if (filterContext.Text != null)
             {
                 var name = filterContext.Text;
-                TramListBox.ItemsSource = _trams.Where(x => x.Contains(name)).ToEnumerable();
+                TramListBox.ItemsSource = _trams.Where(x => x.Key.Contains(name)).ToEnumerable();
 
             }
         }
@@ -79,11 +80,11 @@ namespace Peregrin.View.Panorama
 
             if (item.Content != null)
             {
-                var name = (string)item.Content;
+                var vehicle = (KeyValuePair<string, VehicleType>)item.DataContext;
 
-                if (!_myVehicles.Contains(name))
+                if (!_myVehicles.Keys.Contains(vehicle.Key))
                 {
-                    _myVehicles.Add(name);
+                    _myVehicles.Add(vehicle);
                     var temp = _myVehicles.ToObservable();
                     MyVehiclesListBox.ItemsSource = temp.ToEnumerable();
                 }
@@ -96,8 +97,9 @@ namespace Peregrin.View.Panorama
 
             if (item.Content != null)
             {
-                var name = (string)item.Content;
-                _myVehicles.Remove(name);
+                var vehicle = (KeyValuePair<string, VehicleType>)item.DataContext;
+
+                _myVehicles.Remove(vehicle.Key);
                 var temp = _myVehicles.ToObservable();
                 MyVehiclesListBox.ItemsSource = temp.ToEnumerable();
             }
@@ -107,7 +109,7 @@ namespace Peregrin.View.Panorama
         {
             if (PhoneApplicationService.Current.State.ContainsKey("myVehicles"))
             {
-                PhoneApplicationService.Current.State["myVehicles"] = new List<string>();
+                PhoneApplicationService.Current.State["myVehicles"] = new Dictionary<string, VehicleType>();
                 PhoneApplicationService.Current.State["myVehicles"] = _myVehicles;
             }
             NavigationService.Navigate(new Uri("/View/Portrait/MapView.xaml?", UriKind.Relative));            

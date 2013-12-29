@@ -27,7 +27,7 @@
                     <ListBox x:Name="BusListBox" Grid.Row="1">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Button Style="{StaticResource VehicleButtonStyle}" Content="{Binding}" Click="AddToList_Click" />
+                                <Button Style="{StaticResource VehicleButtonStyle}" Content="{Binding Key}" DataContext="{Binding}" Click="AddToList_Click" />
                                 <toolkit:ContextMenuService.ContextMenu>
                                     <toolkit:ContextMenu IsZoomEnabled="True" x:Name="ContextMenu">
                                         <toolkit:MenuItem x:Name="PinVehicle" Header="Pin vehicle to start" Click="PinVehicle_Click" />
@@ -50,7 +50,7 @@
                     <ListBox x:Name="TramListBox" Grid.Row="1">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Button Style="{StaticResource VehicleButtonStyle}" Content="{Binding}" Click="AddToList_Click"/>
+                                <Button Style="{StaticResource VehicleButtonStyle}" Content="{Binding Key}" DataContext="{Binding}" Click="AddToList_Click"/>
                                 <toolkit:ContextMenuService.ContextMenu>
                                     <toolkit:ContextMenu IsZoomEnabled="True" x:Name="ContextMenu">
                                         <toolkit:MenuItem x:Name="PinVehicle" Header="Pin vehicle to start" Click="PinVehicle_Click" />
@@ -71,7 +71,7 @@
                     <ListBox x:Name="MyVehiclesListBox" Grid.Row="0">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Button Style="{StaticResource VehicleButtonStyle}" Content="{Binding}" Click="DeleteFromList_Click" />
+                                <Button Style="{StaticResource VehicleButtonStyle}" Content="{Binding Key}" DataContext="{Binding}" Click="DeleteFromList_Click" />
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>

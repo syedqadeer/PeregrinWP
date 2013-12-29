@@ -10,11 +10,12 @@ using Microsoft.Phone.Shell;
 using System.Collections.Generic;
 using Microsoft.Phone.Maps.Toolkit;
 using Microsoft.Phone.Maps.Controls;
+using Peregrin.Common.Enum;
 namespace Peregrin.View.Portrait
 {
     public partial class MapView : PhoneApplicationPage
     {
-        private List<string> myVehicles;
+        private IDictionary<string, VehicleType> myVehicles;
 
         public MapView()
         {
@@ -41,7 +42,7 @@ namespace Peregrin.View.Portrait
 
             if (PhoneApplicationService.Current.State.ContainsKey("myVehicles"))
             {
-                myVehicles = (List<string>)PhoneApplicationService.Current.State["myVehicles"];
+                myVehicles = (IDictionary<string, VehicleType>)PhoneApplicationService.Current.State["myVehicles"];
             }
 
             base.OnNavigatedTo(e);
