@@ -6,6 +6,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Peregrin.Resources;
+using System.Collections.Generic;
 
 namespace Peregrin
 {
@@ -61,6 +62,7 @@ namespace Peregrin
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
             Bootstrapper.MapperInitialize();
+            PhoneApplicationService.Current.State.Add(new KeyValuePair<string, object>("myVehicles", new List<string>()));
         }
 
         // Code to execute when the application is activated (brought to foreground)
