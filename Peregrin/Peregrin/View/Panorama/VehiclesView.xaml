@@ -27,7 +27,7 @@
                     <ListBox x:Name="BusListBox" Grid.Row="1">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Button Style="{StaticResource VehicleButtonStyle}" Content="{Binding}" />
+                                <Button Style="{StaticResource VehicleButtonStyle}" Content="{Binding}" Click="AddToList_Click" />
                                 <toolkit:ContextMenuService.ContextMenu>
                                     <toolkit:ContextMenu IsZoomEnabled="True" x:Name="ContextMenu">
                                         <toolkit:MenuItem x:Name="PinVehicle" Header="Pin vehicle to start" Click="PinVehicle_Click" />
@@ -50,7 +50,7 @@
                     <ListBox x:Name="TramListBox" Grid.Row="1">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Button Style="{StaticResource VehicleButtonStyle}" Content="{Binding}" />
+                                <Button Style="{StaticResource VehicleButtonStyle}" Content="{Binding}" Click="AddToList_Click"/>
                                 <toolkit:ContextMenuService.ContextMenu>
                                     <toolkit:ContextMenu IsZoomEnabled="True" x:Name="ContextMenu">
                                         <toolkit:MenuItem x:Name="PinVehicle" Header="Pin vehicle to start" Click="PinVehicle_Click" />
@@ -63,19 +63,19 @@
             </phone:PanoramaItem>
 
             <phone:PanoramaItem Header="My vehicles">
-                <Grid>
-                    <ListBox>
-                        <ListBoxItem>
-                            <Button Style="{StaticResource VehicleButtonStyle}" Content="12" />
-                        </ListBoxItem>
-                        <ListBoxItem>
-                            <Button Style="{StaticResource VehicleButtonStyle}" Content="129" />
-                        </ListBoxItem>
-                        <ListBoxItem>
-                            <Button Style="{StaticResource VehicleButtonStyle}" Content="129" />
-                        </ListBoxItem>
+                 <Grid>
+                    <Grid.RowDefinitions>                        
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="70" />
+                    </Grid.RowDefinitions>
+                    <ListBox x:Name="MyVehiclesListBox" Grid.Row="0">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Button Style="{StaticResource VehicleButtonStyle}" Content="{Binding}" Click="DeleteFromList_Click" />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
                     </ListBox>
-                    <Button Style="{StaticResource SubmitButtonStyle}" Content="Show" />
+                    <Button Grid.Row="1" Style="{StaticResource SubmitButtonStyle}" Content="Show" Click="NavigateToMap_Click" />
                 </Grid>
             </phone:PanoramaItem>
         </phone:Panorama>
