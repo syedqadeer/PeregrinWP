@@ -1,15 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
-using AutoMapper;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
-using Newtonsoft.Json;
 using Peregrin.Common.Enum;
-using Peregrin.Data;
-using Peregrin.Services.DeserializeModel;
 using Peregrin.Services.Providers;
 using RestSharp;
 using Peregrin.Common.Extensions;
@@ -31,7 +25,7 @@ namespace Peregrin.Test
 
             _vehicleProvider = new WroclawVehicleProvider();
             
-            Bootstrapper.MapperInitialize();
+           
         }
         
         [TestMethod]
@@ -66,14 +60,11 @@ namespace Peregrin.Test
             restRequest.AddParameter("busList[bus][]", 122);
 
             //act
-            var result = await _vehicleProvider.GetVehicle("", VehicleType.Bus);
+            var result = await _vehicleProvider.GetVehicle(new KeyValuePair<string, VehicleType>("122", VehicleType.Bus));
             
             //assert
             
-            result.Name.Should().Be("122");
-            result.Type.Should().Be(VehicleType.Bus);
-            result.X.Should().BeInRange(50.0, 60.0);
-            result.Y.Should().BeInRange(10.0, 30.0);
+           
         }
 
 

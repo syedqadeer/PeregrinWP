@@ -1,4 +1,5 @@
-﻿using RestSharp;
+﻿using System.Windows;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace Peregrin.Common.Extensions
 
         public static Task<string> GetContentAsync(this IRestClient client, IRestRequest request)
         {
-            return client.SelectAsync(request, r => r.Content);
+            return client.SelectAsync(request, r => r.Content);            
         }
 
         public static Task<IRestResponse> GetResponseAsync(this IRestClient client, IRestRequest request)

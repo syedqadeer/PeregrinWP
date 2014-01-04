@@ -11,16 +11,20 @@ using System.Collections.Generic;
 using Microsoft.Phone.Maps.Toolkit;
 using Microsoft.Phone.Maps.Controls;
 using Peregrin.Common.Enum;
+using Peregrin.Services.Wrappers;
 namespace Peregrin.View.Portrait
 {
     public partial class MapView : PhoneApplicationPage
     {
-        private IDictionary<string, VehicleType> myVehicles;
+        private IDictionary<string, VehicleType> _myVehicles;
+        private readonly IMapWrapper _mapWrapper;
 
         public MapView()
         {
             InitializeComponent();
-            GetLocations();            
+            _mapWrapper = new MapWrapper(CityMap);
+            GetLocations();
+            
         }
 
         private void Map_Loaded(object sender, System.Windows.RoutedEventArgs e)
@@ -31,27 +35,30 @@ namespace Peregrin.View.Portrait
 
         private void GetLocations()
         {
-            DispatcherTimer timer = new DispatcherTimer();
+            var timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(5);
             timer.Tick += new EventHandler(timer_tick);
             timer.Start();
         }
+
+        private void timer_tick(object sender, EventArgs e)
+        {
+            _mapWrapper.DeleteOldPins();
+            _mapWrapper.AddNewPins(_myVehicles);
+        } 
 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
 
             if (PhoneApplicationService.Current.State.ContainsKey("myVehicles"))
             {
-                myVehicles = (IDictionary<string, VehicleType>)PhoneApplicationService.Current.State["myVehicles"];
+                _myVehicles = (IDictionary<string, VehicleType>)PhoneApplicationService.Current.State["myVehicles"];
             }
 
             base.OnNavigatedTo(e);
         }
 
-        private void timer_tick(object sender, EventArgs e)
-        {
-            
-        }      
+             
 
     }
 }

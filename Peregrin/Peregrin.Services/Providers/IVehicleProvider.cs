@@ -7,7 +7,7 @@ namespace Peregrin.Services.Providers
 {
     public interface IVehicleProvider
     {
-        Task<IVehicle> GetVehicle(string name, VehicleType vehicleType);
+        Task<IEnumerable<IVehicle>> GetVehicle(KeyValuePair<string, VehicleType> vehicleKeyValuePair);
         Task<IEnumerable<IVehicle>> GetVehicles(IDictionary<string, VehicleType> dictionaryOfVehicles);
         IDictionary<string, VehicleType> GetAvailableVehicles(VehicleType vehicleType);
     }

@@ -1,14 +1,7 @@
-﻿using AutoMapper;
-using Peregrin.Services.Automapper;
-
-namespace Peregrin
+﻿namespace Peregrin
 {
     public static class Bootstrapper
     {
-        public static void MapperInitialize()
-        {
-            Mapper.Initialize(cfg => cfg.AddProfile<WroclawVehicleConfig>());
-            Mapper.Initialize(cfg => cfg.AddProfile<CommonConfigs>());
-        }
+        
     }
 }

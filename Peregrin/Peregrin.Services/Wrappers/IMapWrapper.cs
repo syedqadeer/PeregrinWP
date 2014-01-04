@@ -12,7 +12,6 @@ namespace Peregrin.Services.Wrappers
     {
         void DeleteOldPins();
         void AddNewPins(IDictionary<string, VehicleType> selectedVehicles);
-        void CreateNewPin(GeoCoordinate geoCoordinate);
         void SetupMap();
     }
 }

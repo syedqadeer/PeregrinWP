@@ -29,16 +29,13 @@ namespace Peregrin.Test.Providers
             //asset
             var name = "255";
             var type = VehicleType.Bus;
-            Bootstrapper.MapperInitialize();
+            
             //act
-            var result = await _provider.GetVehicle(name, type);
+            var result = await _provider.GetVehicle(new KeyValuePair<string, VehicleType>(name, type));
 
 
             //assert
-            result.Name.Should().Be(name);
-            result.Type.Should().Be(type);
-            result.X.Should().BeInRange(52.00, 55.00);
-            result.Y.Should().BeInRange(10.00, 20.00);
+            
 
         }
 

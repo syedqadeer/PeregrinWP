@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 using Microsoft.Phone.Maps.Toolkit;
 using Peregrin.Services.Providers;
 using Peregrin.Common.Enum;
+using Peregrin.Data.Interface;
 
 namespace Peregrin.Services.Wrappers
 {
     public class MapWrapper : IMapWrapper
     {
-        private Map _mapController;
-        private IVehicleProvider _wroclawProvider;
+        private readonly Map _mapController;
+        private readonly IVehicleProvider _wroclawProvider;
 
         public MapWrapper(Map mapController)
         {
@@ -38,14 +39,15 @@ namespace Peregrin.Services.Wrappers
             }
         }
 
-        public void CreateNewPin(GeoCoordinate geoCoordinate)
+        protected void CreateNewPin(GeoCoordinate geoCoordinate)
         {
-            Pushpin pushpin = new Pushpin();
-            MapLayer mapLayer = new MapLayer();
-            MapOverlay overlay = new MapOverlay();
+            var pushpin = new Pushpin();
+            var mapLayer = new MapLayer();
+            var overlay = new MapOverlay();
             mapLayer.Add(overlay);
             overlay.GeoCoordinate = geoCoordinate;
             overlay.Content = pushpin;
+            _mapController.Layers.Add(mapLayer);
         }
 
         public void SetupMap()
