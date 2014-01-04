@@ -58,7 +58,15 @@ namespace Peregrin.View.Portrait
             base.OnNavigatedTo(e);
         }
 
-             
+        protected override void OnOrientationChanged(OrientationChangedEventArgs e)
+        {
+            if ((e.Orientation & PageOrientation.Landscape) == PageOrientation.Landscape)
+            {
+                NavigationService.Navigate(new Uri("/View/Portrait/Landscape/MapView.xaml", UriKind.Relative));
+            }
+            
+            base.OnOrientationChanged(e);
+        }    
 
     }
 }
