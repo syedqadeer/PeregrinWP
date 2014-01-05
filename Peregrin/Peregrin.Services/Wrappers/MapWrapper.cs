@@ -1,12 +1,7 @@
-﻿using System.Windows;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using Microsoft.Phone.Maps.Controls;
-using System;
 using System.Collections.Generic;
 using System.Device.Location;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Phone.Maps.Toolkit;
 using Peregrin.Services.Providers;
 using Peregrin.Common.Enum;
