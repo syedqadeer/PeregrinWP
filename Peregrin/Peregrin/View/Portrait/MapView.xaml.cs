@@ -55,10 +55,20 @@ namespace Peregrin.View.Portrait
                 _myVehicles = (IDictionary<string, VehicleType>)PhoneApplicationService.Current.State["myVehicles"];
             }
 
+            _mapWrapper.SetupMap();
+
             base.OnNavigatedTo(e);
         }
 
-             
+        protected override void OnOrientationChanged(OrientationChangedEventArgs e)
+        {
+            if ((e.Orientation & PageOrientation.Landscape) == PageOrientation.Landscape)
+            {
+                NavigationService.Navigate(new Uri("/View/Portrait/Landscape/MapView.xaml", UriKind.Relative));
+            }
+            
+            base.OnOrientationChanged(e);
+        }    
 
     }
 }

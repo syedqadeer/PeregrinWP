@@ -107,6 +107,9 @@
     <Compile Include="View\Panorama\VehiclesView.xaml.cs">
       <DependentUpon>VehiclesView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Portrait\Landscape\MapView.xaml.cs">
+      <DependentUpon>MapView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Portrait\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -124,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Panorama\VehiclesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Portrait\Landscape\MapView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
