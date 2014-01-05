@@ -55,6 +55,8 @@ namespace Peregrin.View.Portrait
                 _myVehicles = (IDictionary<string, VehicleType>)PhoneApplicationService.Current.State["myVehicles"];
             }
 
+            _mapWrapper.SetupMap();
+
             base.OnNavigatedTo(e);
         }
 
