@@ -21,6 +21,7 @@ namespace Peregrin.Services.Wrappers
         {
             _mapController = mapController;
             _wroclawProvider = new WroclawVehicleProvider();
+            SetupMap();
         }
 
         public void DeleteOldPins()
@@ -52,7 +53,7 @@ namespace Peregrin.Services.Wrappers
         public void SetupMap()
         {
             _mapController.Center = new GeoCoordinate(51.111, 17.030);
-            _mapController.ZoomLevel = 11;
+            _mapController.ZoomLevel = 8;
         }
     }
 }
