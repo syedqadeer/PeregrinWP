@@ -36,14 +36,14 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="12"/>
+                    <ColumnDefinition Width="6"/>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="12"/>
-                    <ColumnDefinition Width="75"/>
+                    <ColumnDefinition Width="85"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource SearchBoxStyle}" />
-                <Button Grid.Row="0" Grid.Column="3"  Style="{StaticResource SubmitMiniButtonStyle}"/>
+                <TextBox x:Name="VehicleNameTextBox" Grid.Row="0" Grid.Column="1" Style="{StaticResource SearchBoxStyle}" />
+                <Button Grid.Row="0" Grid.Column="3"  Style="{StaticResource SubmitMiniButtonStyle}" Tap="AddVehicleToMap_Tap" />
                 <Controls:Map x:Name="CityMap" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Loaded="Map_Loaded" />            
             </Grid>
 

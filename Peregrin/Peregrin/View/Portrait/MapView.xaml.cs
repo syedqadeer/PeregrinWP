@@ -11,17 +11,22 @@ using System.Collections.Generic;
 using Microsoft.Phone.Maps.Toolkit;
 using Microsoft.Phone.Maps.Controls;
 using Peregrin.Common.Enum;
+using Peregrin.Services.Providers;
 using Peregrin.Services.Wrappers;
+using GestureEventArgs = System.Windows.Input.GestureEventArgs;
+
 namespace Peregrin.View.Portrait
 {
     public partial class MapView : PhoneApplicationPage
     {
         private IDictionary<string, VehicleType> _myVehicles;
         private readonly IMapWrapper _mapWrapper;
+        private readonly IVehicleProvider _vehicleProvider;
 
         public MapView()
         {
             InitializeComponent();
+            _vehicleProvider = new WroclawVehicleProvider();
             _mapWrapper = new MapWrapper(CityMap);
             GetLocations();
             
@@ -68,7 +73,18 @@ namespace Peregrin.View.Portrait
             }
             
             base.OnOrientationChanged(e);
-        }    
+        }
 
+        private void AddVehicleToMap_Tap(object sender, GestureEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(VehicleNameTextBox.Text))
+            {
+                _myVehicles.Add(new KeyValuePair<string, VehicleType>(VehicleNameTextBox.Text, VehicleType.Bus));
+            }
+            else
+            {
+                MessageBox.Show("Please type a valid value");
+            }
+        }
     }
 }
