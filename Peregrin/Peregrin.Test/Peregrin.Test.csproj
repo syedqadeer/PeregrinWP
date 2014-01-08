@@ -108,10 +108,6 @@
     <SDKReference Include="TestPlatform, Version=11.0" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\packages\AutoMapper.3.1.0\lib\wp8\AutoMapper.WP8.dll">
-      <Link>AutoMapper.WP8.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Assets\AlignmentGrid.png" />
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -133,12 +129,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper">
-      <HintPath>..\packages\AutoMapper.3.1.0\lib\wp8\AutoMapper.dll</HintPath>
-    </Reference>
-    <Reference Include="AutoMapper.WP8">
-      <HintPath>..\packages\AutoMapper.3.1.0\lib\wp8\AutoMapper.WP8.dll</HintPath>
-    </Reference>
     <Reference Include="FluentAssertions.WindowsPhone">
       <HintPath>..\packages\FluentAssertions.2.1.0.0\lib\sl4-windowsphone71\FluentAssertions.WindowsPhone.dll</HintPath>
     </Reference>
