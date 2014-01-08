@@ -1,10 +1,7 @@
-﻿using Microsoft.Phone.Maps.Controls;
-using System;
+﻿using System.Windows.Input;
+using Microsoft.Phone.Maps.Controls;
 using System.Collections.Generic;
 using System.Device.Location;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Phone.Maps.Toolkit;
 using Peregrin.Services.Providers;
 using Peregrin.Common.Enum;
@@ -35,19 +32,35 @@ namespace Peregrin.Services.Wrappers
 
             foreach (var item in listOfVehicles)
             {
-                CreateNewPin(new GeoCoordinate(item.X, item.Y));
+                CreateNewPin(item);
             }
         }
 
-        protected void CreateNewPin(GeoCoordinate geoCoordinate)
+        protected void CreateNewPin(IVehicle vehicle)
         {
             var pushpin = new Pushpin();
             var mapLayer = new MapLayer();
             var overlay = new MapOverlay();
+            pushpin.DataContext = vehicle;
+            pushpin.Content = vehicle.Name;
+            pushpin.Tap += pushpin_tap;
             mapLayer.Add(overlay);
-            overlay.GeoCoordinate = geoCoordinate;
+            overlay.GeoCoordinate = new GeoCoordinate(vehicle.X, vehicle.Y);
             overlay.Content = pushpin;
             _mapController.Layers.Add(mapLayer);
+        }
+
+        private void pushpin_tap(object sender, GestureEventArgs eventArgs)
+        {
+            var pushpin = sender as Pushpin;
+
+            if (pushpin != null && pushpin.DataContext != null)
+            {
+                var vehicle = (IVehicle)pushpin.DataContext;
+                _mapController.Center = new GeoCoordinate(vehicle.X, vehicle.Y);
+                _mapController.ZoomLevel = 15;
+            }
+
         }
 
         public void SetupMap()
