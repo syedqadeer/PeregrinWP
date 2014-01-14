@@ -10,5 +10,6 @@ namespace Peregrin.Services.Providers
         Task<IEnumerable<IVehicle>> GetVehicle(KeyValuePair<string, VehicleType> vehicleKeyValuePair);
         Task<IEnumerable<IVehicle>> GetVehicles(IDictionary<string, VehicleType> dictionaryOfVehicles);
         IDictionary<string, VehicleType> GetAvailableVehicles(VehicleType vehicleType);
+        IDictionary<string, VehicleType> GetAvailableVehicles();
     }
 }

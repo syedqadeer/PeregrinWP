@@ -40,7 +40,17 @@ namespace Peregrin.Services.Providers
 
         public IDictionary<string, VehicleType> GetAvailableVehicles(VehicleType vehicleType)
         {
-            var dictionaryOfVehicles = new Dictionary<string, VehicleType>()
+            return AllVehicles().Where(x => x.Value == vehicleType).ToDictionary(k => k.Key, v => v.Value);
+        }
+
+        public IDictionary<string, VehicleType> GetAvailableVehicles()
+        {
+            return AllVehicles().ToDictionary(k => k.Key, v => v.Value);
+        } 
+
+        private IEnumerable<KeyValuePair<string, VehicleType>> AllVehicles()
+        {
+            return new Dictionary<string, VehicleType>()
             {
                 {"A", VehicleType.Bus},{"C", VehicleType.Bus},{"D", VehicleType.Bus},
                 {"K", VehicleType.Bus},{"N", VehicleType.Bus},{"100", VehicleType.Bus},
@@ -69,10 +79,6 @@ namespace Peregrin.Services.Providers
                 {"71", VehicleType.Tram}, {"31+", VehicleType.Tram}, {"32+", VehicleType.Tram},
                 {"33+", VehicleType.Tram}
             };
-
-            
-            return dictionaryOfVehicles.Where(x => x.Value == vehicleType).ToDictionary(k => k.Key, v => v.Value);
-
         }
     }
 }
