@@ -157,6 +157,7 @@
     </Content>
     <Content Include="Assets\Images\Arms\wroclaw.png" />
     <Content Include="Assets\Images\Common\logo_peregrin.png" />
+    <Content Include="Assets\Images\Common\search.png" />
     <Content Include="Assets\Images\Common\splashscreen.png" />
     <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
