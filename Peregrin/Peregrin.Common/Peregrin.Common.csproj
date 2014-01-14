@@ -84,7 +84,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Enum\VehicleType.cs" />
-    <Compile Include="Extensions\AutoMapperExtension.cs" />
     <Compile Include="Extensions\RestSharpExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
