@@ -77,7 +77,15 @@ namespace Peregrin.View.Portrait
         {
             if (!String.IsNullOrEmpty(VehicleNameTextBox.Text))
             {
-                _myVehicles.Add(new KeyValuePair<string, VehicleType>(VehicleNameTextBox.Text, VehicleType.Bus));
+                var vehicle = VehicleNameTextBox.Text;
+
+                if (_vehicleProvider.GetAvailableVehicles().ContainsKey(vehicle) && !_myVehicles.ContainsKey(vehicle))
+                {
+                    VehicleType vehilceType;
+                    _vehicleProvider.GetAvailableVehicles().TryGetValue(vehicle, out vehilceType);
+                    _myVehicles.Add(new KeyValuePair<string, VehicleType>(vehicle, vehilceType));
+                }
+                
             }
             else
             {
