@@ -85,6 +85,10 @@ namespace Peregrin.View.Portrait
                     _vehicleProvider.GetAvailableVehicles().TryGetValue(vehicle, out vehilceType);
                     _myVehicles.Add(new KeyValuePair<string, VehicleType>(vehicle, vehilceType));
                 }
+                else
+                {
+                    MessageBox.Show("Please type a valid value, or probably you have already tracking this vehicle");
+                }
                 
             }
             else
