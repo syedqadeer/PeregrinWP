@@ -29,7 +29,7 @@ namespace Peregrin.View.Portrait
             _vehicleProvider = new WroclawVehicleProvider();
             _mapWrapper = new MapWrapper(CityMap);
             GetLocations();
-            
+
         }
 
         private void Map_Loaded(object sender, System.Windows.RoutedEventArgs e)
@@ -50,7 +50,19 @@ namespace Peregrin.View.Portrait
         {
             _mapWrapper.DeleteOldPins();
             _mapWrapper.AddNewPins(_myVehicles);
-        } 
+        }
+
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            var lastPage = NavigationService.BackStack.FirstOrDefault();
+
+            if (lastPage != null && lastPage.Source.ToString().Contains("MapView.xaml"))
+            {
+                NavigationService.Navigate(new Uri("/View/Portrait/MainView.xaml", UriKind.Relative));
+            }
+
+            base.OnBackKeyPress(e);
+        }
 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
@@ -69,7 +81,7 @@ namespace Peregrin.View.Portrait
             {
                 NavigationService.Navigate(new Uri("/View/Portrait/Landscape/MapView.xaml", UriKind.Relative));
             }
-            
+
             base.OnOrientationChanged(e);
         }
 
@@ -89,7 +101,7 @@ namespace Peregrin.View.Portrait
                 {
                     MessageBox.Show("Please type a valid value, or probably you have already tracking this vehicle");
                 }
-                
+
             }
             else
             {

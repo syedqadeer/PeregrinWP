@@ -36,6 +36,18 @@ namespace Peregrin.View.Portrait.Landscape
             base.OnNavigatedTo(e);
         }
 
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            var lastPage = NavigationService.BackStack.FirstOrDefault();
+
+            if (lastPage != null && lastPage.Source.ToString().Contains("MapView.xaml"))
+            {
+                NavigationService.Navigate(new Uri("/View/Portrait/MainView.xaml", UriKind.Relative));
+            }
+
+            base.OnBackKeyPress(e);
+        }
+
         protected override void OnOrientationChanged(OrientationChangedEventArgs e)
         {
             if ((e.Orientation & PageOrientation.Portrait) == PageOrientation.Portrait)
