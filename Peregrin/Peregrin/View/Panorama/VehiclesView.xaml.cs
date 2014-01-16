@@ -33,21 +33,31 @@ namespace Peregrin.View.Panorama
 
         private void PinVehicle_Click(object sender, RoutedEventArgs e)
         {
+            var menuItem = sender as MenuItem;
 
-            var shellTile = ShellTile.ActiveTiles.FirstOrDefault(x => x.NavigationUri.ToString().Contains("?id="));
+            if (menuItem != null)
+            {
+                var vehiclePin = (KeyValuePair<string, VehicleType>) menuItem.DataContext;
 
-            var liveTile = new StandardTileData
-            {
-                Title = "126"
-            };
 
-            if (shellTile != null)
-            {
-                MessageBox.Show(AppResources.TileIsAlreadyExist);
-            }
-            else
-            {
-                ShellTile.Create(new Uri("/View/Portrait/MapView.xaml", UriKind.Relative), liveTile);
+                var shellTile =
+                    ShellTile.ActiveTiles.FirstOrDefault(
+                        x => x.NavigationUri.ToString().Contains("MapView.xaml?vehicle=" + vehiclePin.Key));
+
+                var liveTile = new StandardTileData
+                {
+                    Title = vehiclePin.Key
+                };
+
+                if (shellTile != null)
+                {
+                    MessageBox.Show(AppResources.TileIsAlreadyExist);
+                }
+                else
+                {
+                    ShellTile.Create(
+                        new Uri("/View/Portrait/MapView.xaml?vehicle=" + vehiclePin.Key, UriKind.Relative), liveTile);
+                }
             }
         }
 

@@ -67,9 +67,21 @@ namespace Peregrin.View.Portrait
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
 
+            string vehicleString;
+
             if (PhoneApplicationService.Current.State.ContainsKey("myVehicles"))
             {
                 _myVehicles = (IDictionary<string, VehicleType>)PhoneApplicationService.Current.State["myVehicles"];
+            }
+
+            if (NavigationContext.QueryString.TryGetValue("vehicle", out vehicleString) && _vehicleProvider.GetAvailableVehicles().ContainsKey(vehicleString))
+            {
+                VehicleType vehicleType;
+
+                if (_vehicleProvider.GetAvailableVehicles().TryGetValue(vehicleString, out vehicleType))
+                {
+                    _myVehicles.Add(new KeyValuePair<string, VehicleType>(vehicleString, vehicleType));
+                }
             }
 
             base.OnNavigatedTo(e);

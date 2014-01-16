@@ -27,12 +27,13 @@
                     <ListBox x:Name="BusListBox" Grid.Row="1">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Button Style="{StaticResource VehicleButtonStyle}" Content="{Binding Key}" DataContext="{Binding}" Click="AddToList_Click" />
-                                <toolkit:ContextMenuService.ContextMenu>
-                                    <toolkit:ContextMenu IsZoomEnabled="True" x:Name="ContextMenu">
-                                        <toolkit:MenuItem x:Name="PinVehicle" Header="Pin vehicle to start" Click="PinVehicle_Click" />
-                                    </toolkit:ContextMenu>
-                                </toolkit:ContextMenuService.ContextMenu>
+                                <Button Style="{StaticResource VehicleButtonStyle}" Content="{Binding Key}" DataContext="{Binding}" Click="AddToList_Click">
+                                    <toolkit:ContextMenuService.ContextMenu>
+                                        <toolkit:ContextMenu IsZoomEnabled="True" x:Name="ContextMenu">
+                                            <toolkit:MenuItem x:Name="PinVehicle" Header="Pin vehicle to start" Click="PinVehicle_Click" />
+                                        </toolkit:ContextMenu>
+                                    </toolkit:ContextMenuService.ContextMenu>
+                                </Button>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
@@ -50,12 +51,13 @@
                     <ListBox x:Name="TramListBox" Grid.Row="1">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Button Style="{StaticResource VehicleButtonStyle}" Content="{Binding Key}" DataContext="{Binding}" Click="AddToList_Click"/>
-                                <toolkit:ContextMenuService.ContextMenu>
-                                    <toolkit:ContextMenu IsZoomEnabled="True" x:Name="ContextMenu">
-                                        <toolkit:MenuItem x:Name="PinVehicle" Header="Pin vehicle to start" Click="PinVehicle_Click" />
-                                    </toolkit:ContextMenu>
-                                </toolkit:ContextMenuService.ContextMenu>
+                                <Button Style="{StaticResource VehicleButtonStyle}" Content="{Binding Key}" DataContext="{Binding}" Click="AddToList_Click">
+                                    <toolkit:ContextMenuService.ContextMenu>
+                                        <toolkit:ContextMenu IsZoomEnabled="True" x:Name="ContextMenu">
+                                            <toolkit:MenuItem x:Name="PinVehicle" Header="Pin vehicle to start" Click="PinVehicle_Click" />
+                                        </toolkit:ContextMenu>
+                                    </toolkit:ContextMenuService.ContextMenu>
+                                </Button>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
@@ -63,8 +65,8 @@
             </phone:PanoramaItem>
 
             <phone:PanoramaItem Header="My vehicles">
-                 <Grid>
-                    <Grid.RowDefinitions>                        
+                <Grid>
+                    <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="70" />
                     </Grid.RowDefinitions>
