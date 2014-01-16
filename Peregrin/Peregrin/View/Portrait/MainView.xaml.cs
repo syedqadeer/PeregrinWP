@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using Microsoft.Phone.Controls;
 using Peregrin.Services.Model;
@@ -14,6 +15,15 @@ namespace Peregrin.View.Portrait
             InitializeComponent();
             CityListbox.ItemsSource = SupportedCities.GetSupportedCities();
         }
+
+
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+
+            Application.Current.Terminate();
+            base.OnBackKeyPress(e);
+        }
+
 
         private void ListBox_SelectCityOnChange(object sender, SelectionChangedEventArgs e)
         {
